@@ -130,14 +130,60 @@
       background: var(--brown);
     }
 
+    .hero-videos {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     .hero-video {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      opacity: 0;
       filter: saturate(0.7) contrast(1.1);
+      transition: opacity 1.5s ease;
+    }
+
+    .hero-video.active {
+      opacity: 0.5;
+    }
+
+    .hero-counter {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 3;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--cream);
+      opacity: 0.5;
+    }
+
+    .hero-pips {
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+
+    .hero-pip {
+      width: 30px;
+      height: 3px;
+      background: rgba(245,230,200,0.3);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero-pip.active {
+      background: var(--cream);
     }
 
     .hero::after {
@@ -811,11 +857,19 @@
     </button>
   </nav>
 
-  <!-- Hero with Video Background -->
+  <!-- Hero with Video Background Carousel -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="reel1.mp4" type="video/mp4">
-    </video>
+    <div class="hero-videos">
+      <video class="hero-video active" autoplay muted loop playsinline><source src="reel1.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel2.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel3.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel5.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel6.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel7.mp4" type="video/mp4"></video>
+      <video class="hero-video" muted loop playsinline><source src="reel8.mp4" type="video/mp4"></video>
+    </div>
+    <div class="hero-pips" id="heroPips"></div>
+    <div class="hero-counter" id="heroCounter">01 / 07</div>
     <div class="hero-content fade-in">
       <div class="hero-badge">Culinary Artist</div>
       <h1>Satya<br><span class="outline">Rai</span></h1>
@@ -888,6 +942,30 @@
           <source src="reel4.mp4" type="video/mp4">
         </video>
         <span class="card-label">Reel 04</span>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel5.mp4" type="video/mp4">
+        </video>
+        <span class="card-label">Reel 05</span>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel6.mp4" type="video/mp4">
+        </video>
+        <span class="card-label">Reel 06</span>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel7.mp4" type="video/mp4">
+        </video>
+        <span class="card-label">Reel 07</span>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel8.mp4" type="video/mp4">
+        </video>
+        <span class="card-label">Reel 08</span>
       </div>
     </div>
     <div class="video-cta">
@@ -996,6 +1074,37 @@
     // Duplicate marquee text for seamless loop
     const marqueeSpan = document.querySelector('.video-marquee span');
     if (marqueeSpan) marqueeSpan.textContent += marqueeSpan.textContent;
+
+    // Hero video carousel
+    const heroVideos = document.querySelectorAll('.hero-video');
+    const heroCounter = document.getElementById('heroCounter');
+    const heroPips = document.getElementById('heroPips');
+    let currentHero = 0;
+
+    // Create pips
+    heroVideos.forEach((_, i) => {
+      const pip = document.createElement('div');
+      pip.className = 'hero-pip' + (i === 0 ? ' active' : '');
+      pip.addEventListener('click', () => switchHeroVideo(i));
+      heroPips.appendChild(pip);
+    });
+
+    function switchHeroVideo(index) {
+      heroVideos[currentHero].classList.remove('active');
+      heroVideos[currentHero].pause();
+      heroPips.children[currentHero].classList.remove('active');
+
+      currentHero = index;
+
+      heroVideos[currentHero].classList.add('active');
+      heroVideos[currentHero].play();
+      heroPips.children[currentHero].classList.add('active');
+      heroCounter.textContent = String(currentHero + 1).padStart(2, '0') + ' / ' + String(heroVideos.length).padStart(2, '0');
+    }
+
+    setInterval(() => {
+      switchHeroVideo((currentHero + 1) % heroVideos.length);
+    }, 5000);
   </script>
 </body>
 </html>
