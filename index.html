@@ -550,6 +550,119 @@
       font-weight: 300;
     }
 
+    /* Enquiry Section */
+    .enquiry-section {
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enquiry-section::before {
+      content: 'DM';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(255,255,255,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .enquiry-content {
+      position: relative;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .enquiry-icon {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--mustard);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+
+    .enquiry-icon svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--mustard);
+    }
+
+    .enquiry-section h2 {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .enquiry-section p {
+      color: rgba(245,230,200,0.7);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .enquiry-services {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .enquiry-services .tag {
+      border-color: rgba(245,230,200,0.3);
+      color: var(--cream);
+      background: rgba(245,230,200,0.05);
+    }
+
+    .dm-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.2rem 3rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: var(--mustard);
+      color: var(--brown);
+      border: 3px solid var(--mustard);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .dm-btn:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+
+    .dm-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .enquiry-note {
+      margin-top: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(245,230,200,0.4);
+    }
+
     /* Connect Section */
     .connect-section {
       background: var(--orange);
@@ -690,6 +803,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#videos">Reels</a></li>
       <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -796,6 +910,28 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         Follow on Instagram
       </a>
+    </div>
+  </section>
+
+  <!-- DM for Enquiry -->
+  <section id="enquiry" class="enquiry-section">
+    <div class="enquiry-content fade-in">
+      <div class="enquiry-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+      </div>
+      <h2>DM for Enquiry</h2>
+      <p>Got a question? Want to collaborate? Looking for a chef for your event? Just slide into the DMs and let's make it happen.</p>
+      <div class="enquiry-services">
+        <span class="tag">Private Events</span>
+        <span class="tag">Collaborations</span>
+        <span class="tag">Brand Deals</span>
+        <span class="tag">Catering</span>
+      </div>
+      <a href="https://ig.me/m/chef_satyaa" target="_blank" rel="noopener" class="dm-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Send a DM
+      </a>
+      <p class="enquiry-note">Replies within 24 hours</p>
     </div>
   </section>
 
