@@ -290,28 +290,32 @@
     }
 
     .instagram-feed {
-      max-width: 600px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    .insta-embed-wrapper {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200, 164, 90, 0.1);
-      border-radius: 8px;
+    .video-card {
+      position: relative;
+      border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.3s;
+      background: var(--dark);
+      border: 1px solid rgba(200, 164, 90, 0.15);
+      transition: transform 0.3s, border-color 0.3s;
     }
 
-    .insta-embed-wrapper:hover {
-      border-color: rgba(200, 164, 90, 0.3);
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200, 164, 90, 0.4);
     }
 
-    .insta-embed-wrapper iframe {
-      width: 100% !important;
-      min-width: unset !important;
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
     }
 
     .instagram-cta {
@@ -556,8 +560,25 @@
       <p>Watch Satya's latest culinary creations and cooking videos straight from Instagram</p>
     </div>
     <div class="instagram-feed fade-in">
-      <div class="insta-embed-wrapper">
-        <iframe src="https://www.instagram.com/reel/DOid6sIDxBj/embed/?autoplay=1" width="100%" height="680" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media" style="border-radius: 8px; max-width: 540px; width: 100%;"></iframe>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="reel4.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="instagram-cta">
